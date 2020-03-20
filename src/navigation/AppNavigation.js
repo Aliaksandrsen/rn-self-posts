@@ -13,7 +13,7 @@ const PostNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'Main', // главный экран
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Platform.OS === 'android' ? THEME.MAIN_COLOR : '#fff'
