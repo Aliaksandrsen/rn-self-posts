@@ -24,7 +24,7 @@ export const MainScreen = ({ navigation }) => {
 }
 
 // опции навигации для этого экрана
-MainScreen.navigationOptions = {
+MainScreen.navigationOptions = ({navigation}) => ({
   headerTitle: 'Мой блог',
   headerRight: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
@@ -40,11 +40,11 @@ MainScreen.navigationOptions = {
       <Item
         title='Toggle Drawer' // просто уникальное значение для item в случае нескольких items
         iconName='ios-menu'
-        onPress={() => console.log('Press menu')}
+        onPress={() => navigation.toggleDrawer()}
       />
     </HeaderButtons>
   ),
-}
+})
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -3,13 +3,17 @@ import { createAppContainer, ThemeColors } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { createDrawerNavigator } from 'react-navigation-drawer'
 import { Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { MainScreen } from '../screens/MainScreen'
 import { PostScreen } from '../screens/PostScreen'
+import { AboutScreen } from '../screens/AboutScreen'
+import { CreateScreen } from '../screens/CreateScreen'
 import { BookedScreen } from '../screens/BookedScreen'
 import { THEME } from '../theem'
 
+// options for all
 const navigatorOptions = {
   defaultNavigationOptions: {
     headerStyle: {
@@ -71,4 +75,16 @@ const BottomNavigator =
         }
       })
 
-export const AppNavigation = createAppContainer(BottomNavigator)
+const MainNavigator = createDrawerNavigator({
+  PosTabs: {
+    screen: BottomNavigator
+  },
+  About: {
+    screen:  AboutScreen
+  },
+  Create: {
+    screen:  CreateScreen
+  },
+})
+
+export const AppNavigation = createAppContainer(MainNavigator)
