@@ -31,7 +31,7 @@ MainScreen.navigationOptions = ({navigation}) => ({
       <Item
         title='Take photo' // просто уникальное значение для item в случае нескольких items
         iconName='ios-camera'
-        onPress={() => console.log('Press photo')}
+        onPress={() => navigation.push('Create')}
       />
     </HeaderButtons>
   ),

@@ -1,5 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { AppHeaderIcon } from '../components/AppHeaderIcon'
 
 export const AboutScreen = ({}) => {
   return (
@@ -8,6 +10,20 @@ export const AboutScreen = ({}) => {
     </View>
   )
 }
+
+// опции навигации для этого экрана
+AboutScreen.navigationOptions = ({navigation}) => ({
+  headerTitle: 'О приложении',
+  headerLeft: (
+    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+      <Item
+        title='Toggle Drawer' // просто уникальное значение для item в случае нескольких items
+        iconName='ios-menu'
+        onPress={() => navigation.toggleDrawer()}
+      />
+    </HeaderButtons>
+  ),
+})
 
 const styles = StyleSheet.create({
   center: {

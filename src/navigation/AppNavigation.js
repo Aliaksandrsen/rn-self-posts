@@ -60,30 +60,43 @@ const bottomTabsConfig = {
   }
 }
 
+const AboutNavigator = createStackNavigator(
+  {
+    About: AboutScreen
+  },
+  navigatorOptions)
+
+const CreateNavigator = createStackNavigator(
+  {
+    Create: CreateScreen
+  },
+  navigatorOptions)
+
+
 const BottomNavigator =
   Platform.OS === 'android'
     ? createMaterialBottomTabNavigator(bottomTabsConfig, {
-        activeTintColor: '#fff',
-        shifting: true, // необяз параметр + текст под иконкой
-        barStyle: {
-          backgroundColor: THEME.MAIN_COLOR
-        }
-      })
+      activeTintColor: '#fff',
+      shifting: true, // необяз параметр + текст под иконкой
+      barStyle: {
+        backgroundColor: THEME.MAIN_COLOR
+      }
+    })
     : createBottomTabNavigator(bottomTabsConfig, {
-        tabBarOptions: {
-          activeTintColor: THEME.MAIN_COLOR
-        }
-      })
+      tabBarOptions: {
+        activeTintColor: THEME.MAIN_COLOR
+      }
+    })
 
 const MainNavigator = createDrawerNavigator({
   PosTabs: {
     screen: BottomNavigator
   },
   About: {
-    screen:  AboutScreen
+    screen: AboutNavigator
   },
   Create: {
-    screen:  CreateScreen
+    screen: CreateNavigator
   },
 })
 
