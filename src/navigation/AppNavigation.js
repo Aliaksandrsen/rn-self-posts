@@ -56,7 +56,7 @@ const BottomNavigator = createBottomTabNavigator({
   Booked: {
     screen: BookedNavigator,
     navigationOptions: {
-      tabBarIcon: info => <Ionicons name='ios-albums' size={25} color={info.tintColor}/>
+      tabBarIcon: info => <Ionicons name='ios-star' size={25} color={info.tintColor}/>
     }
   }
 },
