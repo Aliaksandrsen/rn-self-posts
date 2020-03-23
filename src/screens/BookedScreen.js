@@ -24,7 +24,7 @@ export const BookedScreen = ({ navigation }) => {
 }
 
 // опции навигации для этого экрана
-BookedScreen.navigationOptions = {
+BookedScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Избранное',
   
   headerLeft: (
@@ -32,11 +32,11 @@ BookedScreen.navigationOptions = {
       <Item
         title='Toggle Drawer' // просто уникальное значение для item в случае нескольких items
         iconName='ios-menu'
-        onPress={() => console.log('Press menu')}
+        onPress={() => navigation.toggleDrawer()}
       />
     </HeaderButtons>
   ),
-}
+})
 
 const styles = StyleSheet.create({
   wrapper: {
