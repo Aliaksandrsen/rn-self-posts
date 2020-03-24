@@ -6,16 +6,24 @@ import { Post } from '../components/Post'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
 import { loadPosts } from '../store/actions'
 
+const getDispatchWrapper= () => {
+  const dispatch = useDispatch();
+  
+  return {
+    loadPostsDispatch: () => dispatch(loadPosts())
+  };
+}
+
 export const MainScreen = ({ navigation }) => {
   const openPostHandler = (post) => {
     navigation.navigate('Post', { postId: post.id, date: post.date, booked: post.booked }) // booked прокидываем сюда (убираем баг)
   }
 
-  const dispatch = useDispatch();
-
+  const { loadPostsDispatch } = getDispatchWrapper();
+  
   useEffect(() => {
-    dispatch(loadPosts())
-  }, [dispatch])
+    loadPostsDispatch()
+  }, [])
 
   const allPosts = useSelector(state => state.post.allPosts)
 
