@@ -1,19 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Button, FlatList } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
-import { DATA } from '../data'
+import { useDispatch, useSelector } from 'react-redux'
 import { Post } from '../components/Post'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
+import { loadPosts } from '../store/actions'
 
 export const MainScreen = ({ navigation }) => {
   const openPostHandler = (post) => {
     navigation.navigate('Post', { postId: post.id, date: post.date, booked: post.booked }) // booked прокидываем сюда (убираем баг)
   }
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadPosts())
+  }, [dispatch])
+
+  const allPosts = useSelector(state => state.post.allPosts)
+
   return (
     <View style={styles.wrapper}>
       <FlatList
-        data={DATA}
+        data={allPosts}
         keyExtractor={post => post.id.toString()}
         renderItem={({ item }) => {
           return <Post post={item} onOpen={openPostHandler} />
@@ -24,7 +33,7 @@ export const MainScreen = ({ navigation }) => {
 }
 
 // опции навигации для этого экрана
-MainScreen.navigationOptions = ({navigation}) => ({
+MainScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Мой блог',
   headerRight: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
