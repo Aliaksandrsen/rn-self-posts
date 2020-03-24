@@ -6,11 +6,11 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import { Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { MainScreen } from '../screens/MainScreen'
+import  MainScreen  from '../screens/MainScreen'
 import { PostScreen } from '../screens/PostScreen'
 import { AboutScreen } from '../screens/AboutScreen'
 import { CreateScreen } from '../screens/CreateScreen'
-import { BookedScreen } from '../screens/BookedScreen'
+import  BookedScreen  from '../screens/BookedScreen'
 import { THEME } from '../theem'
 
 // options for all
