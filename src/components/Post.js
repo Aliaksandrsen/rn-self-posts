@@ -1,5 +1,11 @@
 import React from 'react'
-import { View, StyleSheet, ImageBackground, Text, TouchableOpacity } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Text,
+  TouchableOpacity
+} from 'react-native'
 
 export const Post = ({ post, onOpen }) => {
   return (
@@ -7,7 +13,9 @@ export const Post = ({ post, onOpen }) => {
       <View style={styles.post}>
         <ImageBackground style={styles.image} source={{ uri: post.img }}>
           <View style={styles.textWrap}>
-            <Text style={styles.title}> {new Date(post.date).toLocaleDateString()}</Text>
+            <Text style={styles.title}>
+              {new Date(post.date).toLocaleDateString()}
+            </Text>
           </View>
         </ImageBackground>
       </View>
@@ -27,11 +35,11 @@ const styles = StyleSheet.create({
   textWrap: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     paddingVertical: 5,
-    alignItems: "center",
+    alignItems: 'center',
     width: '100%'
   },
   title: {
     color: '#fff',
-    fontFamily: 'open-regular',
+    fontFamily: 'open-regular'
   }
 })

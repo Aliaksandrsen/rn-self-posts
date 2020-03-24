@@ -11,18 +11,17 @@ export const CreateScreen = ({}) => {
   )
 }
 
-// опции навигации для этого экрана
-CreateScreen.navigationOptions = ({navigation}) => ({
+CreateScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Создать пост',
   headerLeft: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
-        title='Toggle Drawer' // просто уникальное значение для item в случае нескольких items
+        title='Toggle Drawer'
         iconName='ios-menu'
         onPress={() => navigation.toggleDrawer()}
       />
     </HeaderButtons>
-  ),
+  )
 })
 
 const styles = StyleSheet.create({

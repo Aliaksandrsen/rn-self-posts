@@ -6,24 +6,25 @@ import { AppHeaderIcon } from '../components/AppHeaderIcon'
 export const AboutScreen = ({}) => {
   return (
     <View style={styles.center}>
-      <Text>Приложение для личных заметок</Text>
-      <Text>Версия приложения <Text style={styles.version}>1.0.0</Text></Text>
+      <Text>Это лучшее приложение для личных заметок.</Text>
+      <Text>
+        Версия приложения <Text style={styles.version}>1.0.0</Text>
+      </Text>
     </View>
   )
 }
 
-// опции навигации для этого экрана
-AboutScreen.navigationOptions = ({navigation}) => ({
+AboutScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'О приложении',
   headerLeft: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
-        title='Toggle Drawer' // просто уникальное значение для item в случае нескольких items
+        title='Toggle Drawer'
         iconName='ios-menu'
         onPress={() => navigation.toggleDrawer()}
       />
     </HeaderButtons>
-  ),
+  )
 })
 
 const styles = StyleSheet.create({

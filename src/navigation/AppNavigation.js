@@ -11,9 +11,8 @@ import { PostScreen } from '../screens/PostScreen'
 import { AboutScreen } from '../screens/AboutScreen'
 import { CreateScreen } from '../screens/CreateScreen'
 import { BookedScreen } from '../screens/BookedScreen'
-import { THEME } from '../theem'
+import { THEME } from '../theme'
 
-// options for all
 const navigatorOptions = {
   defaultNavigationOptions: {
     headerStyle: {
@@ -60,60 +59,61 @@ const bottomTabsConfig = {
   }
 }
 
+const BottomNavigator =
+  Platform.OS === 'android'
+    ? createMaterialBottomTabNavigator(bottomTabsConfig, {
+        activeTintColor: '#fff',
+        shifting: true,
+        barStyle: {
+          backgroundColor: THEME.MAIN_COLOR
+        }
+      })
+    : createBottomTabNavigator(bottomTabsConfig, {
+        tabBarOptions: {
+          activeTintColor: THEME.MAIN_COLOR
+        }
+      })
+
 const AboutNavigator = createStackNavigator(
   {
     About: AboutScreen
   },
-  navigatorOptions)
+  navigatorOptions
+)
 
 const CreateNavigator = createStackNavigator(
   {
     Create: CreateScreen
   },
-  navigatorOptions)
+  navigatorOptions
+)
 
-
-const BottomNavigator =
-  Platform.OS === 'android'
-    ? createMaterialBottomTabNavigator(bottomTabsConfig, {
-      activeTintColor: '#fff',
-      shifting: true, // необяз параметр + текст под иконкой
-      barStyle: {
-        backgroundColor: THEME.MAIN_COLOR
+const MainNavigator = createDrawerNavigator(
+  {
+    PostTabs: {
+      screen: BottomNavigator,
+      navigationOptions: {
+        drawerLabel: 'Главная'
+        // drawerIcon: <Ionicons name='ios-star' />
       }
-    })
-    : createBottomTabNavigator(bottomTabsConfig, {
-      tabBarOptions: {
-        activeTintColor: THEME.MAIN_COLOR
+    },
+    About: {
+      screen: AboutNavigator,
+      navigationOptions: {
+        drawerLabel: 'О приложении'
       }
-    })
-
-const MainNavigator = createDrawerNavigator({
-  PosTabs: {
-    screen: BottomNavigator,
-    navigationOptions: {
-      drawerLabel: 'Главная',
-      // drawerIcon: <Ionicons name='ios-star'/>
+    },
+    Create: {
+      screen: CreateNavigator,
+      navigationOptions: {
+        drawerLabel: 'Новый пост'
+      }
     }
   },
-  About: {
-    screen: AboutNavigator,
-    navigationOptions: {
-      drawerLabel: 'О приложении'
-    }
-  },
-  Create: {
-    screen: CreateNavigator,
-    navigationOptions: {
-      drawerLabel: 'Новый пост'
-    }
-  },
-},
-  // опции для дровера
   {
     contentOptions: {
       activeTintColor: THEME.MAIN_COLOR,
-      labelSize: {
+      labelStyle: {
         fontFamily: 'open-bold'
       }
     }
