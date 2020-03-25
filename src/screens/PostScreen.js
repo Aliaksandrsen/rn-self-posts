@@ -19,7 +19,7 @@ export const PostScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId')
 
   const post = useSelector(state =>
-    state.post.allPosts.find(post => post.id === postId)
+    state.post.allPosts.find(p => p.id === postId)
   )
 
   const booked = useSelector(state =>
@@ -50,17 +50,16 @@ export const PostScreen = ({ navigation }) => {
         {
           text: 'Удалить',
           style: 'destructive',
-          onPress: () => { 
-            navigation.navigate('Main');
-            dispatch(removePost(postId));
-          },
+          onPress() {
+            navigation.navigate('Main')
+            dispatch(removePost(postId))
+          }
         }
       ],
       { cancelable: false }
     )
   }
 
-  // проверки т.к. если удаляем то работаем с несуществующими данными
   if (!post) {
     return null
   }
